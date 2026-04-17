@@ -71,6 +71,17 @@ h2 {
     border-bottom: none;
 }
 
+.illustrated-authors {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
 .authors {
     font-size: 1.1rem;
     font-weight: 500;
@@ -211,12 +222,98 @@ p {
     margin-bottom: 1rem;
 }
 
+/* Abstract Section */
+.abstract {
+    background: #fdfdfd;
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid #f0f0f0;
+    margin: 4rem 0;
+    line-height: 1.8;
+}
+
+.abstract h2 {
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.abstract p {
+    font-size: 1.1rem;
+    color: #4a5568;
+}
+
+.abstract a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
 footer {
     margin-top: 6rem;
     padding: 4rem 0;
     border-top: 1px solid #eee;
     text-align: center;
     color: #a0aec0;
+}
+
+/* Profile Section Styles */
+.profile-section {
+    margin-top: 4rem;
+    padding: 2rem;
+    background: #fdfdfd;
+    border: 1px solid #f0f0f0;
+    border-radius: 15px;
+}
+
+.profile-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background: #edf2f7;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e0;
+}
+
+.profile-avatar svg {
+    width: 40px;
+    height: 40px;
+}
+
+.profile-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+    color: #2d3748;
+}
+
+.profile-tagline {
+    font-size: 1rem;
+    color: #718096;
+    margin-bottom: 0.5rem;
+}
+
+.profile-links {
+    font-size: 0.95rem;
+    color: #4a5568;
+}
+
+.profile-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.profile-links a:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {

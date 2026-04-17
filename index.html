@@ -15,6 +15,23 @@
     </div>
 
     <div class="container">
+        <!-- Personal Profile (Top) -->
+        <section class="profile-section animate">
+            <div class="profile-content">
+                <div class="profile-avatar">
+                   <img src="assets/avatar.png" alt="Tran Vu Quang Huy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                </div>
+                <div class="profile-text">
+                    <h3>Tran Vu Quang Huy</h3>
+                    <p class="profile-tagline">Visualizing machine learning one concept at a time.</p>
+                    <p class="profile-links">
+                        Follow on <a href="https://github.com/tranvuquanghuy12" target="_blank">GitHub</a> • 
+                        Contact: <a href="mailto:tranvuquanghuy12@gmail.com">tranvuquanghuy12@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- Academic Header -->
         <header class="academic-header animate">
             <h2 class="paper-title">Logits DeConfusion with CLIP for Few-Shot Learning</h2>
@@ -33,11 +50,35 @@
                 <span class="lang-vi">The Illustrated Logits De-Confusion</span>
                 <span class="lang-en">The Illustrated Logits De-Confusion</span>
             </h1>
+            <p class="illustrated-authors">By Shuo Li, Fang Liu*, Zehua Hao, Xinyi Wang, Lingling Li, Xu Liu, Puhua Chen, Wenping Ma</p>
             <p>
                 <span class="lang-vi">Giải mã cơ chế tinh chỉnh Logit bằng tri thức từ CLIP để chinh phục Few-Shot Learning.</span>
                 <span class="lang-en">Decoding Logit refinement mechanism using CLIP knowledge to master Few-Shot Learning.</span>
             </p>
         </header>
+
+        <section class="abstract animate">
+            <h2>
+                <span class="lang-vi">Tóm tắt</span>
+                <span class="lang-en">Abstract</span>
+            </h2>
+            <p>
+                <span class="lang-vi">
+                    Với khả năng căn chỉnh ngôn ngữ-thị giác mạnh mẽ, CLIP hoạt động tốt trong các tác vụ học zero-shot (chưa từng thấy mẫu) và few-shot (chỉ có vài mẫu). Tuy nhiên, qua các thí nghiệm, chúng tôi nhận thấy rằng các logit của CLIP gặp phải vấn đề nhầm lẫn giữa các lớp nghiêm trọng trong các tác vụ ở giai đoạn sau (downstream tasks), và sự mơ hồ giữa các danh mục ảnh hưởng nghiêm trọng đến độ chính xác.
+                    <br><br>
+                    Để giải quyết thách thức này, chúng tôi đề xuất một phương pháp mới có tên là <strong>Giải trừ sự nhầm lẫn Logits (Logits DeConfusion)</strong>, phương pháp này học và loại bỏ hiệu quả sự nhầm lẫn giữa các lớp trong các logit bằng cách kết hợp mô-đun <strong>Dung hợp Bộ điều hợp Đa cấp (MAF)</strong> với mô-đun <strong>Giải trừ sự nhầm lẫn Giữa các lớp (ICD)</strong>. Kết quả thực nghiệm cho thấy phương pháp của chúng tôi có thể cải thiện đáng kể hiệu suất phân loại.
+                    <br><br>
+                    Mã nguồn được cung cấp tại: <a href="https://github.com/LiShuo1001/LDC" target="_blank">https://github.com/LiShuo1001/LDC</a>
+                </span>
+                <span class="lang-en">
+                    With powerful vision-language alignment, CLIP performs well in zero-shot and few-shot learning. However, experiments reveal that CLIP's logits suffer from severe inter-class confusion in downstream tasks, where categorical ambiguity significantly impacts accuracy.
+                    <br><br>
+                    To address this, we propose <strong>Logits DeConfusion</strong>, which learnably eliminates inter-class confusion by combining a <strong>Multi-level Adapter Fusion (MAF)</strong> module with an <strong>Inter-Class Deconfusion (ICD)</strong> module. Experimental results demonstrate significant improvements in classification performance.
+                    <br><br>
+                    Source code: <a href="https://github.com/LiShuo1001/LDC" target="_blank">https://github.com/LiShuo1001/LDC</a>
+                </span>
+            </p>
+        </section>
 
         <section class="animate">
             <div class="diagram-container">
@@ -137,6 +178,8 @@
                 <span class="lang-vi">Bằng cách kết hợp khả năng học nhanh (Few-shot) với kho tri thức khổng lồ (CLIP), chúng ta không chỉ làm mô hình thông minh hơn mà còn làm cho các quyết định của nó trở nên <strong>minh bạch và chắc chắn</strong> hơn.</span>
                 <span class="lang-en">By combining fast learning (Few-shot) with a vast knowledge base (CLIP), we not only make models smarter but also make their decisions more <strong>transparent and certain</strong>.</span>
             </p>
+        </section>
+
         </section>
 
         <footer class="animate">
