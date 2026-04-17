@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illustrated Logits De-Confusion | CLIP & Few-Shot Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="A visual guide to Logits De-Confusion with CLIP for solving confusion in Few-Shot Learning.">
+</head>
+<body data-lang="vi">
+    <!-- Language Switcher -->
+    <div class="lang-switcher">
+        <button id="btn-vi" class="active" onclick="setLang('vi')">VI</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+
+    <div class="container">
+        <!-- Academic Header -->
+        <header class="academic-header animate">
+            <h2 class="paper-title">Logits DeConfusion with CLIP for Few-Shot Learning</h2>
+            <p class="authors">Shuo Li, Fang Liu*, Zehua Hao, Xinyi Wang, Lingling Li, Xu Liu, Puhua Chen, Wenping Ma</p>
+            <p class="affiliation">
+                Key Laboratory of Intelligent Perception and Image Understanding of Ministry of Education,<br>
+                International Research Center for Intelligent Perception and Computation,<br>
+                Joint International Research Laboratory of Intelligent Perception and Computation,<br>
+                School of Artificial Intelligence, Xidian University, Xi’an 710071, China
+            </p>
+            <p class="emails">lishuo@xidian.edu.cn, f63liu@163.com</p>
+        </header>
+
+        <header class="hero animate">
+            <h1>
+                <span class="lang-vi">The Illustrated Logits De-Confusion</span>
+                <span class="lang-en">The Illustrated Logits De-Confusion</span>
+            </h1>
+            <p>
+                <span class="lang-vi">Giải mã cơ chế tinh chỉnh Logit bằng tri thức từ CLIP để chinh phục Few-Shot Learning.</span>
+                <span class="lang-en">Decoding Logit refinement mechanism using CLIP knowledge to master Few-Shot Learning.</span>
+            </p>
+        </header>
+
+        <section class="animate">
+            <div class="diagram-container">
+                <img src="assets/hero.png" alt="Logits DeConfusion Hero" class="diagram">
+                <p class="caption">Hình 1: Dòng chảy từ sự "Confused" (hỗn loạn) đến "De-Confused" (ngăn nắp) thông qua lăng kính CLIP.</p>
+            </div>
+
+            <p>
+                <span class="lang-vi">Trong thế giới của <strong>Few-Shot Learning</strong>, mô hình AI thường gặp khó khăn khi chỉ có vài ví dụ để học. Một trong những vấn đề lớn nhất là sự <strong>nhầm lẫn Logit (Logit Confusion)</strong>.</span>
+                <span class="lang-en">In the world of <strong>Few-Shot Learning</strong>, AI models often struggle when they only have a few examples to learn from. One of the biggest issues is <strong>Logit Confusion</strong>.</span>
+            </p>
+            
+            <div class="note-box">
+                <span class="lang-vi"><strong>Logit là gì?</strong> Trong ngữ cảnh này, chúng là những điểm số chưa qua chuẩn hóa mà mô hình gán cho mỗi lớp. Khi các logit này quá gần nhau, mô hình sẽ không chắc chắn về quyết định của mình.</span>
+                <span class="lang-en"><strong>What is a Logit?</strong> In this context, they are the unnormalized scores that the model assigns to each class. When these logits are too close together, the model becomes uncertain about its decision.</span>
+            </div>
+        </section>
+
+        <section class="animate">
+            <h2>
+                <span class="lang-vi">Vấn đề: Sự nhầm lẫn giữa các lớp</span>
+                <span class="lang-en">The Problem: Confusion Between Classes</span>
+            </h2>
+            <p>
+                <span class="lang-vi">Hãy tưởng tượng bạn đang dạy AI phân biệt giữa "Mèo xiêm" và "Mèo Ragdoll". Vì chúng có nhiều đặc điểm tương đồng, xác suất (logits) mà mô hình dự đoán thường bị chồng lấn, dẫn đến sai sót.</span>
+                <span class="lang-en">Imagine teaching an AI to distinguish between a "Siamese Cat" and a "Ragdoll Cat". Because they share many similar features, the probabilities (logits) predicted by the model often overlap, leading to errors.</span>
+            </p>
+            
+            <div class="concept-grid">
+                <div class="card confusion">
+                    <h3>
+                        <span class="lang-vi">❌ Logit Confusion</span>
+                        <span class="lang-en">❌ Logit Confusion</span>
+                    </h3>
+                    <p>
+                        <span class="lang-vi">Các lớp có đặc điểm tương đồng bị kéo lại gần nhau trong không gian đặc trưng, gây ra sự nhiễu loạn và dự đoán sai.</span>
+                        <span class="lang-en">Classes with similar features are pulled close together in the feature space, causing noise and mispredictions.</span>
+                    </p>
+                </div>
+                <div class="card deconfusion">
+                    <h3>
+                        <span class="lang-vi">✅ De-Confusion</span>
+                        <span class="lang-en">✅ De-Confusion</span>
+                    </h3>
+                    <p>
+                        <span class="lang-vi">Sử dụng tri thức bên ngoài để đẩy các lớp này ra xa nhau, tạo ra ranh giới phân loại rõ rệt hơn.</span>
+                        <span class="lang-en">Using external knowledge to push these classes apart, creating clearer classification boundaries.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="animate">
+            <h2>
+                <span class="lang-vi">Giải pháp: CLIP làm "điểm neo" tri thức</span>
+                <span class="lang-en">The Solution: CLIP as a Knowledge Anchor</span>
+            </h2>
+            <p>
+                <span class="lang-vi"><strong>CLIP (Contrastive Language-Image Pre-training)</strong> đóng vai trò như một người thầy có kiến thức tổng quát cực lớn. Thay vì chỉ dựa vào vài ví dụ ít ỏi, chúng ta mượn "không gian nhúng" (embedding space) của CLIP để định hướng.</span>
+                <span class="lang-en"><strong>CLIP (Contrastive Language-Image Pre-training)</strong> acts like a teacher with vast general knowledge. Instead of relying solely on a few examples, we borrow CLIP's "embedding space" for guidance.</span>
+            </p>
+            
+            <div class="diagram-container">
+                <img src="assets/walkthrough.png" alt="CLIP Walkthrough" class="diagram">
+                <p class="caption">
+                    <span class="lang-vi">Hình 2: Cách tri thức từ CLIP giúp hiệu đính các Logit bị nhầm lẫn.</span>
+                    <span class="lang-en">Figure 2: How knowledge from CLIP helps refine confused Logits.</span>
+                </p>
+            </div>
+
+            <p>
+                <span class="lang-vi">Quá trình <strong>Logits De-Confusion</strong> hoạt động theo 3 bước chính:</span>
+                <span class="lang-en">The <strong>Logits De-Confusion</strong> process works in 3 main steps:</span>
+            </p>
+            <ol style="margin-left: 2rem; margin-bottom: 2rem;">
+                <li>
+                    <span class="lang-vi"><strong>Trích xuất:</strong> Lấy ra các logit thô từ mô hình Few-shot hiện tại.</span>
+                    <span class="lang-en"><strong>Extract:</strong> Get raw logits from the current Few-shot model.</span>
+                </li>
+                <li>
+                    <span class="lang-vi"><strong>Đối chiếu:</strong> So sánh sự tương quan giữa các lớp dựa trên kiến thức ngôn ngữ-hình ảnh của CLIP.</span>
+                    <span class="lang-en"><strong>Compare:</strong> Evaluate correlations between classes based on CLIP's vision-language knowledge.</span>
+                </li>
+                <li>
+                    <span class="lang-vi"><strong>Hiệu đính:</strong> Điều chỉnh lại các giá trị logit sao cho những lớp dễ nhầm lẫn được phân tách dựa trên sự khác biệt ngữ nghĩa mà CLIP đã biết.</span>
+                    <span class="lang-en"><strong>Refine:</strong> Adjust logit values so that confusing classes are separated based on semantic differences known to CLIP.</span>
+                </li>
+            </ol>
+        </section>
+
+        <section class="animate">
+            <h2>
+                <span class="lang-vi">Kết luận</span>
+                <span class="lang-en">Conclusion</span>
+            </h2>
+            <p>
+                <span class="lang-vi">Bằng cách kết hợp khả năng học nhanh (Few-shot) với kho tri thức khổng lồ (CLIP), chúng ta không chỉ làm mô hình thông minh hơn mà còn làm cho các quyết định của nó trở nên <strong>minh bạch và chắc chắn</strong> hơn.</span>
+                <span class="lang-en">By combining fast learning (Few-shot) with a vast knowledge base (CLIP), we not only make models smarter but also make their decisions more <strong>transparent and certain</strong>.</span>
+            </p>
+        </section>
+
+        <footer class="animate">
+            <p>
+                <span class="lang-vi">© 2026 - Được truyền cảm hứng bởi phong cách của Jay Alammar</span>
+                <span class="lang-en">© 2026 - Inspired by Jay Alammar's style</span>
+            </p>
+            <p>
+                <span class="lang-vi">Xây dựng cho dự án: <em>The Intrulated Logits De-Confusion</em></span>
+                <span class="lang-en">Built for the project: <em>The Intrulated Logits De-Confusion</em></span>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            document.body.setAttribute('data-lang', lang);
+            document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+            localStorage.setItem('preferred-lang', lang);
+        }
+
+        // Initialize from localStorage
+        const savedLang = localStorage.getItem('preferred-lang') || 'vi';
+        setLang(savedLang);
+
+        // Hiệu ứng hiện dần khi cuộn trang
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section, header, footer').forEach(el => {
+            el.style.opacity = '0'; // Ẩn lúc đầu
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
