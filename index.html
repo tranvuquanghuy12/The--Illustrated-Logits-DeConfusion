@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Illustrated Logits De-Confusion | CLIP & Few-Shot Learning</title>
     <link rel="stylesheet" href="style.css">
-    <meta name="description" content="A visual guide to Logits De-Confusion with CLIP for solving confusion in Few-Shot Learning.">
+    <meta name="description"
+        content="A visual guide to Logits De-Confusion with CLIP for solving confusion in Few-Shot Learning.">
 </head>
+
 <body data-lang="vi">
     <!-- Language Switcher -->
     <div class="lang-switcher">
@@ -19,13 +22,14 @@
         <section class="profile-section animate">
             <div class="profile-content">
                 <div class="profile-avatar">
-                   <img src="assets/avatar.png" alt="Tran Vu Quang Huy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                    <img src="assets/avatar.png" alt="Tran Vu Quang Huy"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                 </div>
                 <div class="profile-text">
                     <h3>Tran Vu Quang Huy</h3>
                     <p class="profile-tagline">Visualizing machine learning one concept at a time.</p>
                     <p class="profile-links">
-                        Follow on <a href="https://github.com/tranvuquanghuy12" target="_blank">GitHub</a> • 
+                        Follow on <a href="https://github.com/tranvuquanghuy12" target="_blank">GitHub</a> •
                         Contact: <a href="mailto:tranvuquanghuy12@gmail.com">tranvuquanghuy12@gmail.com</a>
                     </p>
                 </div>
@@ -35,7 +39,8 @@
         <!-- Academic Header -->
         <header class="academic-header animate">
             <h2 class="paper-title">Logits DeConfusion with CLIP for Few-Shot Learning</h2>
-            <p class="authors">Shuo Li, Fang Liu*, Zehua Hao, Xinyi Wang, Lingling Li, Xu Liu, Puhua Chen, Wenping Ma</p>
+            <p class="authors">Shuo Li, Fang Liu*, Zehua Hao, Xinyi Wang, Lingling Li, Xu Liu, Puhua Chen, Wenping Ma
+            </p>
             <p class="affiliation">
                 Key Laboratory of Intelligent Perception and Image Understanding of Ministry of Education,<br>
                 International Research Center for Intelligent Perception and Computation,<br>
@@ -50,10 +55,13 @@
                 <span class="lang-vi">The Illustrated Logits De-Confusion</span>
                 <span class="lang-en">The Illustrated Logits De-Confusion</span>
             </h1>
-            <p class="illustrated-authors">By Shuo Li, Fang Liu*, Zehua Hao, Xinyi Wang, Lingling Li, Xu Liu, Puhua Chen, Wenping Ma</p>
+            <p class="illustrated-authors">By Shuo Li, Fang Liu*, Zehua Hao, Xinyi Wang, Lingling Li, Xu Liu, Puhua
+                Chen, Wenping Ma</p>
             <p>
-                <span class="lang-vi">Giải mã cơ chế tinh chỉnh Logit bằng tri thức từ CLIP để chinh phục Few-Shot Learning.</span>
-                <span class="lang-en">Decoding Logit refinement mechanism using CLIP knowledge to master Few-Shot Learning.</span>
+                <span class="lang-vi">Giải mã cơ chế tinh chỉnh Logit bằng tri thức từ CLIP để chinh phục Few-Shot
+                    Learning.</span>
+                <span class="lang-en">Decoding Logit refinement mechanism using CLIP knowledge to master Few-Shot
+                    Learning.</span>
             </p>
         </header>
 
@@ -64,36 +72,202 @@
             </h2>
             <p>
                 <span class="lang-vi">
-                    Với khả năng căn chỉnh ngôn ngữ-thị giác mạnh mẽ, CLIP hoạt động tốt trong các tác vụ học zero-shot (chưa từng thấy mẫu) và few-shot (chỉ có vài mẫu). Tuy nhiên, qua các thí nghiệm, chúng tôi nhận thấy rằng các logit của CLIP gặp phải vấn đề nhầm lẫn giữa các lớp nghiêm trọng trong các tác vụ ở giai đoạn sau (downstream tasks), và sự mơ hồ giữa các danh mục ảnh hưởng nghiêm trọng đến độ chính xác.
+                    Với khả năng căn chỉnh ngôn ngữ-thị giác mạnh mẽ, CLIP hoạt động tốt trong các tác vụ học zero-shot
+                    (chưa từng thấy mẫu) và few-shot (chỉ có vài mẫu). Tuy nhiên, qua các thí nghiệm, chúng tôi nhận
+                    thấy rằng các logit của CLIP gặp phải vấn đề nhầm lẫn giữa các lớp nghiêm trọng trong các tác vụ ở
+                    giai đoạn sau (downstream tasks), và sự mơ hồ giữa các danh mục ảnh hưởng nghiêm trọng đến độ chính
+                    xác.
                     <br><br>
-                    Để giải quyết thách thức này, chúng tôi đề xuất một phương pháp mới có tên là <strong>Giải trừ sự nhầm lẫn Logits (Logits DeConfusion)</strong>, phương pháp này học và loại bỏ hiệu quả sự nhầm lẫn giữa các lớp trong các logit bằng cách kết hợp mô-đun <strong>Dung hợp Bộ điều hợp Đa cấp (MAF)</strong> với mô-đun <strong>Giải trừ sự nhầm lẫn Giữa các lớp (ICD)</strong>. Kết quả thực nghiệm cho thấy phương pháp của chúng tôi có thể cải thiện đáng kể hiệu suất phân loại.
+                    Để giải quyết thách thức này, chúng tôi đề xuất một phương pháp mới có tên là <strong>Giải trừ sự
+                        nhầm lẫn Logits (Logits DeConfusion)</strong>, phương pháp này học và loại bỏ hiệu quả sự nhầm
+                    lẫn giữa các lớp trong các logit bằng cách kết hợp mô-đun <strong>Dung hợp Bộ điều hợp Đa cấp
+                        (MAF)</strong> với mô-đun <strong>Giải trừ sự nhầm lẫn Giữa các lớp (ICD)</strong>. Kết quả thực
+                    nghiệm cho thấy phương pháp của chúng tôi có thể cải thiện đáng kể hiệu suất phân loại.
                     <br><br>
-                    Mã nguồn được cung cấp tại: <a href="https://github.com/LiShuo1001/LDC" target="_blank">https://github.com/LiShuo1001/LDC</a>
+                    Mã nguồn được cung cấp tại: <a href="https://github.com/LiShuo1001/LDC"
+                        target="_blank">https://github.com/LiShuo1001/LDC</a>
                 </span>
                 <span class="lang-en">
-                    With powerful vision-language alignment, CLIP performs well in zero-shot and few-shot learning. However, experiments reveal that CLIP's logits suffer from severe inter-class confusion in downstream tasks, where categorical ambiguity significantly impacts accuracy.
+                    With powerful vision-language alignment, CLIP performs well in zero-shot and few-shot learning.
+                    However, experiments reveal that CLIP's logits suffer from severe inter-class confusion in
+                    downstream tasks, where categorical ambiguity significantly impacts accuracy.
                     <br><br>
-                    To address this, we propose <strong>Logits DeConfusion</strong>, which learnably eliminates inter-class confusion by combining a <strong>Multi-level Adapter Fusion (MAF)</strong> module with an <strong>Inter-Class Deconfusion (ICD)</strong> module. Experimental results demonstrate significant improvements in classification performance.
+                    To address this, we propose <strong>Logits DeConfusion</strong>, which learnably eliminates
+                    inter-class confusion by combining a <strong>Multi-level Adapter Fusion (MAF)</strong> module with
+                    an <strong>Inter-Class Deconfusion (ICD)</strong> module. Experimental results demonstrate
+                    significant improvements in classification performance.
                     <br><br>
-                    Source code: <a href="https://github.com/LiShuo1001/LDC" target="_blank">https://github.com/LiShuo1001/LDC</a>
+                    Source code: <a href="https://github.com/LiShuo1001/LDC"
+                        target="_blank">https://github.com/LiShuo1001/LDC</a>
                 </span>
             </p>
+        </section>
+
+        <section class="introduction animate">
+            <h2>
+                <span class="lang-vi">1. Giới thiệu</span>
+                <span class="lang-en">1. Introduction</span>
+            </h2>
+            <p>
+                <span class="lang-vi">
+                    Gần đây, hiệu suất vượt trội của các <strong>Mô hình Ngôn ngữ-Thị giác (VLMs)</strong> trong việc
+                    hiểu hình ảnh đã thu hút được sự chú ý rộng rãi. <strong>CLIP (Contrastive Language-Image
+                        Pretraining)</strong> thành công trong việc ánh xạ hình ảnh và văn bản vào một không gian nhúng
+                    chung, đạt được quá trình Học Zero-Shot (ZSL) xuất sắc. Tuy nhiên, mặc dù CLIP có tiềm năng lớn
+                    trong Học Few-Shot (FSL), các logit của nó thường cho thấy sự nhầm lẫn giữa các lớp nghiêm trọng,
+                    dẫn đến sự sụt giảm trong độ chính xác phân loại.
+                    <br><br>
+                    Trong thí nghiệm ZSL dựa trên CLIP ban đầu, chúng tôi nhận thấy sự khó khăn trong việc phân biệt
+                    chính xác các giá trị dự đoán. Nguyên nhân chính là do chiến lược huấn luyện đối chiếu của CLIP tập
+                    trung vào khớp cặp thay vì tối ưu hóa ranh giới phân loại rành mạch. Sự khác biệt về miền (domain
+                    differences) càng làm trầm trọng thêm vấn đề này, đặc biệt là khi độ tương đồng giữa các danh mục
+                    cao.
+                    <br><br>
+                    Để giải quyết thách thức này, chúng tôi đề xuất <strong>mô hình hóa và loại bỏ sự nhầm lẫn thông qua
+                        việc học</strong>. Chúng tôi sử dụng một mô-đun có thể học được (learnable module) để nắm bắt
+                    quy luật nhầm lẫn và sau đó loại bỏ chúng thông qua một <strong>cấu trúc phần dư (residual
+                        structure)</strong>, giúp mô hình đạt độ chính xác mạnh mẽ hơn.
+                </span>
+                <span class="lang-en">
+                    Recently, the superior performance of <strong>Vision-Language Models (VLMs)</strong> has gained
+                    widespread attention. <strong>CLIP</strong> successfully maps images and text into a shared
+                    embedding space, achieving remarkable Zero-Shot Learning (ZSL). However, despite CLIP's potential in
+                    Few-Shot Learning (FSL), its logits often exhibit severe inter-class confusion, limiting
+                    classification accuracy.
+                    <br><br>
+                    In initial CLIP-based ZSL experiments (Figure 1 (a)), we observed difficulty in accurately
+                    distinguishing prediction values. This is primarily because CLIP's contrastive pre-training strategy
+                    focuses on pairing rather than direct boundary optimization. Domain differences further exacerbate
+                    this, especially when category similarity is high.
+                    <br><br>
+                    To address this, we propose <strong>modeling and learnably removing confusion</strong>. We use a
+                    learnable module to capture confusion patterns and eliminate them via a <strong>residual
+                        structure</strong>, resulting in stronger generalization and higher accuracy.
+                </span>
+            </p>
+        </section>
+
+        <section class="basic-concepts animate">
+            <h2>
+                <span class="lang-vi">Các khái niệm cơ bản</span>
+                <span class="lang-en">Basic Concepts</span>
+            </h2>
+            <p style="text-align: center; margin-bottom: 3rem;">
+                <span class="lang-vi">Để hiểu tại sao mô hình CLIP gặp khó khăn trong việc phân loại chính xác, chúng ta
+                    cần làm rõ ba trụ cột kiến thức sau:</span>
+                <span class="lang-en">To understand why CLIP struggles with accurate classification, we need to clarify
+                    these three knowledge pillars:</span>
+            </p>
+
+            <div class="concept-flow">
+                <!-- Concept 1: Logits -->
+                <div class="concept-item">
+                    <div class="concept-item">
+                        <h3>
+                            <span class="lang-vi">1. Logits (Điểm số thô)</span>
+                            <span class="lang-en">1. Logits (Raw Scores)</span>
+                        </h3>
+                        <p>
+                            <span class="lang-vi">
+                                <strong>Định nghĩa:</strong> Logits là kết quả của phép toán tích vô hướng (Dot Product)
+                                giữa vector đặc trưng hình ảnh và vector đặc trưng văn bản trong không gian nhúng chung.
+                                Giá trị này đại diện cho độ tương đồng thô giữa ảnh và nhãn. Trong CLIP, Logits thường
+                                được xuất ra dưới dạng một <strong>Vector</strong>, chứa điểm số của tất cả các nhãn lớp
+                                có trong danh sách.
+                            </span>
+                            <span class="lang-en">
+                                <strong>Definition:</strong> Logits are the results of the Dot Product between image
+                                feature vectors and text feature vectors in a shared embedding space.
+                                This value represents the raw similarity between an image and a label. In CLIP, logits
+                                are typically output as a <strong>Vector</strong>, containing scores for all class
+                                labels in the candidate list.
+                            </span>
+                        </p>
+                        <div class="diagram-container">
+                            <img src="assets/Image_Raw_Scrores.png" alt="Logits Generation Process" class="diagram">
+                            <p class="caption">
+                                <i>
+                                    <span class="lang-vi">Hình 1: Quy trình trích xuất đặc trưng và tính toán Vector
+                                        Logit từ cặp Ảnh - Văn bản.</span>
+                                    <span class="lang-en">Figure 1: Feature extraction and Logit Vector computation
+                                        process from Image-Text pairs.</span>
+                                </i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Concept 2: Contrastive Matching -->
+                <div class="concept-item">
+                    <h3>
+                        <span class="lang-vi">2. Contrastive Matching (Khớp cặp đối chiếu)</span>
+                        <span class="lang-en">2. Contrastive Matching</span>
+                    </h3>
+                    <p>
+                        <span class="lang-vi"><strong>Cơ chế:</strong> CLIP học bằng cách ánh xạ hình ảnh và văn bản vào
+                            một không gian nhúng chung. Mô hình cố gắng kéo các cặp tương đồng lại gần nhau và đẩy các
+                            cặp không phù hợp ra xa nhau. Do chỉ tập trung vào "khớp cặp", CLIP thiếu đi ranh giới phân
+                            loại rành mạch.</span>
+                        <span class="lang-en"><strong>Mechanism:</strong> CLIP learns by mapping images and text into a
+                            shared embedding space. It pulls matching pairs closer and pushes mismatches apart. By
+                            focusing on "matching," CLIP lacks professional classification boundaries.</span>
+                    </p>
+                    <div class="diagram-container">
+                        <img src="assets/Image_Contrastive_Matching.png" alt="Contrastive Matching Diagram"
+                            class="diagram">
+                        <p class="caption"><i><span class="lang-vi">Hình 2: Cơ chế kéo-đẩy trong không gian nhúng chung
+                                    của CLIP.</span><span class="lang-en">Figure 2: Push-pull mechanism in CLIP's shared
+                                    embedding space.</span></i></p>
+                    </div>
+                </div>
+
+                <!-- Concept 3: Confusion Matrix -->
+                <div class="concept-item">
+                    <h3>
+                        <span class="lang-vi">3. Confusion Matrix (Ma trận nhầm lẫn)</span>
+                        <span class="lang-en">3. Confusion Matrix</span>
+                    </h3>
+                    <p>
+                        <span class="lang-vi"><strong>Định nghĩa:</strong> Đây là bảng thống kê dùng để đo lường hiệu
+                            suất của mô hình. Các ô nằm ngoài đường chéo chính thể hiện sự nhầm lẫn giữa các lớp
+                            (Inter-class confusion), nơi mô hình dự đoán nhầm lớp này sang lớp khác.</span>
+                        <span class="lang-en"><strong>Definition:</strong> A statistical table to measure model
+                            performance. Cells outside the main diagonal represent inter-class confusion, where the
+                            model mispredicts one class for another.</span>
+                    </p>
+                    <div class="diagram-container">
+                        <img src="assets/confusion.png" alt="Confusion Matrix Diagram" class="diagram">
+                        <p class="caption"><i><span class="lang-vi">Hình 4: Ma trận biểu hiện sự nhầm lẫn giữa các danh
+                                    mục tương đồng.</span><span class="lang-en">Figure 4: Matrix showing confusion
+                                    between similar categories.</span></i></p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="animate">
             <div class="diagram-container">
                 <img src="assets/hero.png" alt="Logits DeConfusion Hero" class="diagram">
-                <p class="caption">Hình 1: Dòng chảy từ sự "Confused" (hỗn loạn) đến "De-Confused" (ngăn nắp) thông qua lăng kính CLIP.</p>
+                <p class="caption">Hình 1: Dòng chảy từ sự "Confused" (hỗn loạn) đến "De-Confused" (ngăn nắp) thông qua
+                    lăng kính CLIP.</p>
             </div>
 
             <p>
-                <span class="lang-vi">Trong thế giới của <strong>Few-Shot Learning</strong>, mô hình AI thường gặp khó khăn khi chỉ có vài ví dụ để học. Một trong những vấn đề lớn nhất là sự <strong>nhầm lẫn Logit (Logit Confusion)</strong>.</span>
-                <span class="lang-en">In the world of <strong>Few-Shot Learning</strong>, AI models often struggle when they only have a few examples to learn from. One of the biggest issues is <strong>Logit Confusion</strong>.</span>
+                <span class="lang-vi">Trong thế giới của <strong>Few-Shot Learning</strong>, mô hình AI thường gặp khó
+                    khăn khi chỉ có vài ví dụ để học. Một trong những vấn đề lớn nhất là sự <strong>nhầm lẫn Logit
+                        (Logit Confusion)</strong>.</span>
+                <span class="lang-en">In the world of <strong>Few-Shot Learning</strong>, AI models often struggle when
+                    they only have a few examples to learn from. One of the biggest issues is <strong>Logit
+                        Confusion</strong>.</span>
             </p>
-            
+
             <div class="note-box">
-                <span class="lang-vi"><strong>Logit là gì?</strong> Trong ngữ cảnh này, chúng là những điểm số chưa qua chuẩn hóa mà mô hình gán cho mỗi lớp. Khi các logit này quá gần nhau, mô hình sẽ không chắc chắn về quyết định của mình.</span>
-                <span class="lang-en"><strong>What is a Logit?</strong> In this context, they are the unnormalized scores that the model assigns to each class. When these logits are too close together, the model becomes uncertain about its decision.</span>
+                <span class="lang-vi"><strong>Logit là gì?</strong> Trong ngữ cảnh này, chúng là những điểm số chưa qua
+                    chuẩn hóa mà mô hình gán cho mỗi lớp. Khi các logit này quá gần nhau, mô hình sẽ không chắc chắn về
+                    quyết định của mình.</span>
+                <span class="lang-en"><strong>What is a Logit?</strong> In this context, they are the unnormalized
+                    scores that the model assigns to each class. When these logits are too close together, the model
+                    becomes uncertain about its decision.</span>
             </div>
         </section>
 
@@ -103,10 +277,14 @@
                 <span class="lang-en">The Problem: Confusion Between Classes</span>
             </h2>
             <p>
-                <span class="lang-vi">Hãy tưởng tượng bạn đang dạy AI phân biệt giữa "Mèo xiêm" và "Mèo Ragdoll". Vì chúng có nhiều đặc điểm tương đồng, xác suất (logits) mà mô hình dự đoán thường bị chồng lấn, dẫn đến sai sót.</span>
-                <span class="lang-en">Imagine teaching an AI to distinguish between a "Siamese Cat" and a "Ragdoll Cat". Because they share many similar features, the probabilities (logits) predicted by the model often overlap, leading to errors.</span>
+                <span class="lang-vi">Hãy tưởng tượng bạn đang dạy AI phân biệt giữa "Mèo xiêm" và "Mèo Ragdoll". Vì
+                    chúng có nhiều đặc điểm tương đồng, xác suất (logits) mà mô hình dự đoán thường bị chồng lấn, dẫn
+                    đến sai sót.</span>
+                <span class="lang-en">Imagine teaching an AI to distinguish between a "Siamese Cat" and a "Ragdoll Cat".
+                    Because they share many similar features, the probabilities (logits) predicted by the model often
+                    overlap, leading to errors.</span>
             </p>
-            
+
             <div class="concept-grid">
                 <div class="card confusion">
                     <h3>
@@ -114,8 +292,10 @@
                         <span class="lang-en">❌ Logit Confusion</span>
                     </h3>
                     <p>
-                        <span class="lang-vi">Các lớp có đặc điểm tương đồng bị kéo lại gần nhau trong không gian đặc trưng, gây ra sự nhiễu loạn và dự đoán sai.</span>
-                        <span class="lang-en">Classes with similar features are pulled close together in the feature space, causing noise and mispredictions.</span>
+                        <span class="lang-vi">Các lớp có đặc điểm tương đồng bị kéo lại gần nhau trong không gian đặc
+                            trưng, gây ra sự nhiễu loạn và dự đoán sai.</span>
+                        <span class="lang-en">Classes with similar features are pulled close together in the feature
+                            space, causing noise and mispredictions.</span>
                     </p>
                 </div>
                 <div class="card deconfusion">
@@ -124,8 +304,10 @@
                         <span class="lang-en">✅ De-Confusion</span>
                     </h3>
                     <p>
-                        <span class="lang-vi">Sử dụng tri thức bên ngoài để đẩy các lớp này ra xa nhau, tạo ra ranh giới phân loại rõ rệt hơn.</span>
-                        <span class="lang-en">Using external knowledge to push these classes apart, creating clearer classification boundaries.</span>
+                        <span class="lang-vi">Sử dụng tri thức bên ngoài để đẩy các lớp này ra xa nhau, tạo ra ranh giới
+                            phân loại rõ rệt hơn.</span>
+                        <span class="lang-en">Using external knowledge to push these classes apart, creating clearer
+                            classification boundaries.</span>
                     </p>
                 </div>
             </div>
@@ -137,10 +319,14 @@
                 <span class="lang-en">The Solution: CLIP as a Knowledge Anchor</span>
             </h2>
             <p>
-                <span class="lang-vi"><strong>CLIP (Contrastive Language-Image Pre-training)</strong> đóng vai trò như một người thầy có kiến thức tổng quát cực lớn. Thay vì chỉ dựa vào vài ví dụ ít ỏi, chúng ta mượn "không gian nhúng" (embedding space) của CLIP để định hướng.</span>
-                <span class="lang-en"><strong>CLIP (Contrastive Language-Image Pre-training)</strong> acts like a teacher with vast general knowledge. Instead of relying solely on a few examples, we borrow CLIP's "embedding space" for guidance.</span>
+                <span class="lang-vi"><strong>CLIP (Contrastive Language-Image Pre-training)</strong> đóng vai trò như
+                    một người thầy có kiến thức tổng quát cực lớn. Thay vì chỉ dựa vào vài ví dụ ít ỏi, chúng ta mượn
+                    "không gian nhúng" (embedding space) của CLIP để định hướng.</span>
+                <span class="lang-en"><strong>CLIP (Contrastive Language-Image Pre-training)</strong> acts like a
+                    teacher with vast general knowledge. Instead of relying solely on a few examples, we borrow CLIP's
+                    "embedding space" for guidance.</span>
             </p>
-            
+
             <div class="diagram-container">
                 <img src="assets/walkthrough.png" alt="CLIP Walkthrough" class="diagram">
                 <p class="caption">
@@ -155,16 +341,22 @@
             </p>
             <ol style="margin-left: 2rem; margin-bottom: 2rem;">
                 <li>
-                    <span class="lang-vi"><strong>Trích xuất:</strong> Lấy ra các logit thô từ mô hình Few-shot hiện tại.</span>
-                    <span class="lang-en"><strong>Extract:</strong> Get raw logits from the current Few-shot model.</span>
+                    <span class="lang-vi"><strong>Trích xuất:</strong> Lấy ra các logit thô từ mô hình Few-shot hiện
+                        tại.</span>
+                    <span class="lang-en"><strong>Extract:</strong> Get raw logits from the current Few-shot
+                        model.</span>
                 </li>
                 <li>
-                    <span class="lang-vi"><strong>Đối chiếu:</strong> So sánh sự tương quan giữa các lớp dựa trên kiến thức ngôn ngữ-hình ảnh của CLIP.</span>
-                    <span class="lang-en"><strong>Compare:</strong> Evaluate correlations between classes based on CLIP's vision-language knowledge.</span>
+                    <span class="lang-vi"><strong>Đối chiếu:</strong> So sánh sự tương quan giữa các lớp dựa trên kiến
+                        thức ngôn ngữ-hình ảnh của CLIP.</span>
+                    <span class="lang-en"><strong>Compare:</strong> Evaluate correlations between classes based on
+                        CLIP's vision-language knowledge.</span>
                 </li>
                 <li>
-                    <span class="lang-vi"><strong>Hiệu đính:</strong> Điều chỉnh lại các giá trị logit sao cho những lớp dễ nhầm lẫn được phân tách dựa trên sự khác biệt ngữ nghĩa mà CLIP đã biết.</span>
-                    <span class="lang-en"><strong>Refine:</strong> Adjust logit values so that confusing classes are separated based on semantic differences known to CLIP.</span>
+                    <span class="lang-vi"><strong>Hiệu đính:</strong> Điều chỉnh lại các giá trị logit sao cho những lớp
+                        dễ nhầm lẫn được phân tách dựa trên sự khác biệt ngữ nghĩa mà CLIP đã biết.</span>
+                    <span class="lang-en"><strong>Refine:</strong> Adjust logit values so that confusing classes are
+                        separated based on semantic differences known to CLIP.</span>
                 </li>
             </ol>
         </section>
@@ -175,8 +367,12 @@
                 <span class="lang-en">Conclusion</span>
             </h2>
             <p>
-                <span class="lang-vi">Bằng cách kết hợp khả năng học nhanh (Few-shot) với kho tri thức khổng lồ (CLIP), chúng ta không chỉ làm mô hình thông minh hơn mà còn làm cho các quyết định của nó trở nên <strong>minh bạch và chắc chắn</strong> hơn.</span>
-                <span class="lang-en">By combining fast learning (Few-shot) with a vast knowledge base (CLIP), we not only make models smarter but also make their decisions more <strong>transparent and certain</strong>.</span>
+                <span class="lang-vi">Bằng cách kết hợp khả năng học nhanh (Few-shot) với kho tri thức khổng lồ (CLIP),
+                    chúng ta không chỉ làm mô hình thông minh hơn mà còn làm cho các quyết định của nó trở nên
+                    <strong>minh bạch và chắc chắn</strong> hơn.</span>
+                <span class="lang-en">By combining fast learning (Few-shot) with a vast knowledge base (CLIP), we not
+                    only make models smarter but also make their decisions more <strong>transparent and
+                        certain</strong>.</span>
             </p>
         </section>
 
@@ -221,4 +417,5 @@
         });
     </script>
 </body>
+
 </html>
